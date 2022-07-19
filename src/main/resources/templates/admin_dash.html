@@ -31,7 +31,9 @@
                 <td th:text="${user.roleAsSting()}"></td>
                 <td>
                     <a th:href="@{update_user/{id}(id=${user.id})}">Edit</a>
-                    <a th:href="@{delete_user/{id}(id=${user.id})}">Delete</a>
+                    <form th:method="DELETE" th:action="@{user-delete/{id}(id=${user.id})}">
+                        <input type="submit" value="Delete">
+                    </form>
                 </td>
             </tr>
             </tbody>

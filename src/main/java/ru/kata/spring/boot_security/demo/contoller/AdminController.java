@@ -45,12 +45,12 @@ public class AdminController {
 
     @PostMapping("/create_user")
     public String createUser(@ModelAttribute User user) {
-//        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userServiceImpl.saveUser(user);
         return "redirect:/admin/";
     }
 
-    @GetMapping("/delete_user/{id}")
+    @DeleteMapping("/user-delete/{id}")
     public String deleteUser(@PathVariable("id") Long id) {
         userServiceImpl.deleteById(id);
         return "redirect:/admin/";
@@ -61,15 +61,14 @@ public class AdminController {
         User user = userServiceImpl.findById(id);
         model.addAttribute("edit", user);
 
-
         List<Role> rolesList = rolesServiceImpl.findAll();
         model.addAttribute("rolesList", rolesList);
         return "update_user";
     }
 
-    @PostMapping("/update_user")
+    @PatchMapping("/update_user")
     public String updateUser(User user) {
-//        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userServiceImpl.saveUser(user);
         return "redirect:/admin/";
     }

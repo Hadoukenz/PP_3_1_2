@@ -10,12 +10,12 @@
     <hr>
     <h2>Enter data</h2>
 
-    <form action="#" th:action="@{/admin/update_user}" th:object="${edit}" method="POST">
+    <form action="#" th:action="@{/admin/update_user}" th:object="${edit}" th:method="PATCH">
         <!-- Add hidden form field to handle update -->
         <input type="hidden" th:field="*{id}" />
         <input type="text" th:field="*{name}" placeholder="Name">
         <input type="text" th:field="*{lastname}" placeholder="Last Name">
-        <input type="text" th:filed="*{password}" placeholder="Password">
+        <input type="password" th:field="*{password}" placeholder="Password">
         <input type="text" th:field="*{age}" placeholder="Age">
         <input type="text" th:field="*{email}" placeholder="E-mail">
         <select multiple size="2"
